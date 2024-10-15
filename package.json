@@ -1,0 +1,21 @@
+{
+  "name": "miniproject",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@types/node": "^22.7.5"
+  },
+  "dependencies": {
+    "jimp": "^1.6.0",
+    "jsqr": "^1.4.0",
+    "playwright": "^1.48.0",
+    "qrcode": "^1.5.4",
+    "qrcode-reader": "^1.0.4"
+  }
+}

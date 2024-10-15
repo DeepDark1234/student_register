@@ -1,0 +1,29 @@
+test('3.2 ตรวจสอบลิ้งค์ คู่มือการสมัครเรียน', async ({ page }) => {
+    await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php'); // เปลี่ยนเป็น URL ของคุณ
+
+    // หาลิงก์ "คู่มือการสมัครเรียน"
+    const manualLink = await page.locator("(//a[@id='btn-check-rights'])[1]");
+    // ตรวจสอบว่าลิงก์มีอยู่
+    await expect(manualLink).toBeVisible();
+    // คลิกที่ลิงก์ "คู่มือการสมัครเรียน" และรอให้แท็บใหม่เปิดขึ้น
+    const [newPage] = await Promise.all([
+        page.waitForEvent('popup'), // รอให้แท็บใหม่เปิดขึ้น
+        manualLink.click(), // คลิกที่ลิงก์
+    ]);
+    // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
+    await expect(newPage).toHaveURL('https://www.youtube.com/watch?v=pwpXi0bUN84&feature=youtu.be');
+});
+
+
+test('3.1 ตรวจสอบลิ้งค์หน้าแรก', async ({ page }) => {
+    await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php'); // เปลี่ยนเป็น URL ของคุณ
+
+    // หาลิงก์ "หน้าแรก"
+    const homeLink = await page.locator('a#nav-home');
+    // ตรวจสอบว่าลิงก์มีอยู่
+    await expect(homeLink).toBeVisible();
+    // คลิกที่ลิงก์ "หน้าแรก"
+    await homeLink.click();
+    // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
+    await expect(page).toHaveURL('https://www.surin.rmuti.ac.th/Test/Quo/index.php'); // ตรวจสอบว่า URL ลงท้ายด้วย index.php
+});
