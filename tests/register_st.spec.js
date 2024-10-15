@@ -6,7 +6,7 @@ test.setTimeout(6000000);
 let edu, degree
 
 // วันที่เริ่มต้น (ตั้งค่าเป็นวันที่ที่คุณต้องการเริ่มนับ)
-const startDate = '2024-09-09'; // รูปแบบ YYYY-MM-DD
+const startDate = '2024-09-05'; // รูปแบบ YYYY-MM-DD
 const startingId = '100000000000'; // เลขบัตรประชาชนเริ่มต้น
 
 // คำนวณจำนวนวันที่ผ่านไปตั้งแต่วันที่เริ่มต้น
@@ -685,56 +685,57 @@ test('7. ขึ้นทะเบียนนักศึกษา', async ({ pa
     await page.screenshot({ path: `${Date.now()}-ผลการขึ้้นทะเบียนนักศึกษา.png` });
 });
 
-test('8. แจ้งยืนยันการชำระเงิน', async ({ page }) => {
-    await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
+// นี่มันเว็บจริงไอน้อง
+// test('8. แจ้งยืนยันการชำระเงิน', async ({ page }) => {
+//     await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
 
-    // หาลิงก์ "คู่มือการสมัครเรียน"
-    const link = await page.locator("(//a[contains(text(),'แจ้งยืนยันการชำระเงิน')])[1]");
-    // ตรวจสอบว่าลิงก์มีอยู่
-    await expect(link).toBeVisible();
-    // คลิกที่ลิงก์ "คู่มือการสมัครเรียน" และรอให้แท็บใหม่เปิดขึ้น
-    const [newPage] = await Promise.all([
-        page.waitForEvent('popup'), // รอให้แท็บใหม่เปิดขึ้น
-        link.click(), // คลิกที่ลิงก์
-    ]);
-    // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
-    await expect(newPage).toHaveURL('https://payment.surin.rmuti.ac.th/2023/');
+//     // หาลิงก์ "คู่มือการสมัครเรียน"
+//     const link = await page.locator("(//a[contains(text(),'แจ้งยืนยันการชำระเงิน')])[1]");
+//     // ตรวจสอบว่าลิงก์มีอยู่
+//     await expect(link).toBeVisible();
+//     // คลิกที่ลิงก์ "คู่มือการสมัครเรียน" และรอให้แท็บใหม่เปิดขึ้น
+//     const [newPage] = await Promise.all([
+//         page.waitForEvent('popup'), // รอให้แท็บใหม่เปิดขึ้น
+//         link.click(), // คลิกที่ลิงก์
+//     ]);
+//     // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
+//     await expect(newPage).toHaveURL('https://payment.surin.rmuti.ac.th/2023/');
 
-    await page.goto('https://payment.surin.rmuti.ac.th/2023/');
-    await page.locator('#login').click();
-    await page.locator('#login').fill('1000000000017');
-    await page.getByRole('button', { name: 'LOGIN' }).click();
-    await page.getByRole('link', { name: 'คลิก' }).click();
-    await page.getByLabel('บัญชีธนาคารของมหาลัยฯ').selectOption('1');
-    await page.locator('#payment_type_id').selectOption('10');
-    await page.locator('#payment_number').fill('0');
-    await page.getByLabel('โอนจากธนาคาร').selectOption('1');
-    await page.getByLabel('วันที่ชำระ').fill('2024-10-24');
-    await page.fill('#payment_time', '14:30');
-    await page.getByLabel('ยอดโอน(บาท)').click();
-    await page.getByLabel('ยอดโอน(บาท)').fill('9999');
-    await page.locator('#PaymentForm div').filter({ hasText: 'โอนจากธนาคาร - กรุงเทพ' }).first().click();
+//     await page.goto('https://payment.surin.rmuti.ac.th/2023/');
+//     await page.locator('#login').click();
+//     await page.locator('#login').fill('1000000000017');
+//     await page.getByRole('button', { name: 'LOGIN' }).click();
+//     await page.getByRole('link', { name: 'คลิก' }).click();
+//     await page.getByLabel('บัญชีธนาคารของมหาลัยฯ').selectOption('1');
+//     await page.locator('#payment_type_id').selectOption('10');
+//     await page.locator('#payment_number').fill('0');
+//     await page.getByLabel('โอนจากธนาคาร').selectOption('1');
+//     await page.getByLabel('วันที่ชำระ').fill('2024-10-24');
+//     await page.fill('#payment_time', '14:30');
+//     await page.getByLabel('ยอดโอน(บาท)').click();
+//     await page.getByLabel('ยอดโอน(บาท)').fill('9999');
+//     await page.locator('#PaymentForm div').filter({ hasText: 'โอนจากธนาคาร - กรุงเทพ' }).first().click();
 
-    // // Click input[name="file-upload"]
-    // await page.locator("(//input[@id='payment_files'])[1]").click();
-    // // Upload fixture.pdf
-    // await page.locator("(//input[@id='payment_files'])[1]").setInputFiles('wll.png');
-    // // Click text=fixture.pdf
-    // await page.locator('text=wll.png').click();
+//     // // Click input[name="file-upload"]
+//     // await page.locator("(//input[@id='payment_files'])[1]").click();
+//     // // Upload fixture.pdf
+//     // await page.locator("(//input[@id='payment_files'])[1]").setInputFiles('wll.png');
+//     // // Click text=fixture.pdf
+//     // await page.locator('text=wll.png').click();
 
-    const handle = page.locator('input[type="file"]');
-    await handle.setInputFiles("D:/coding/miniproject/wll.png");
+//     const handle = page.locator('input[type="file"]');
+//     await handle.setInputFiles("D:/coding/miniproject/wll.png");
 
-    page.once("dialog", (dialog) => {
-        console.log(dialog.message());
-        dialog.accept();
-    });
+//     page.once("dialog", (dialog) => {
+//         console.log(dialog.message());
+//         dialog.accept();
+//     });
 
 
-    await page.getByRole('button', { name: 'แจ้งชำระ' }).click();
-    await page.pause();
-    await page.screenshot({ path: `${Date.now()}-ผลการแจ้งชำระเงิน.png` });
-});
+//     await page.getByRole('button', { name: 'แจ้งชำระ' }).click();
+//     await page.pause();
+//     await page.screenshot({ path: `${Date.now()}-ผลการแจ้งชำระเงิน.png` });
+// });
 
 test('10. สามารถ logout ได้', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
