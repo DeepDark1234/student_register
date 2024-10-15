@@ -452,24 +452,30 @@ test('5. ดูรายละเอียดสมัครเรียนอ�
     // ไปที่หน้าเว็บที่ต้องการทดสอบ
     await page.goto('https://www.surin.rmuti.ac.th/staff/index.php'); // หรือ URL จริงของหน้าเว็บ
 
-    // รอให้ iframe โหลดเสร็จ
-    const iframeElement = await page.waitForSelector('iframe#headline');
+    // // รอให้ iframe โหลดเสร็จ
+    // const iframeElement = await page.waitForSelector('iframe#headline');
 
-    // ตรวจสอบว่า iframe ถูกโหลดแล้วหรือไม่
-    const iframe = await iframeElement.contentFrame();
-    if (iframe) {
-        console.log('PDF loaded successfully');
-    } else {
-        console.log('Failed to load PDF');
-    }
+    // // ตรวจสอบว่า iframe ถูกโหลดแล้วหรือไม่
+    // const iframe = await iframeElement.contentFrame();
+    // if (iframe) {
+    //     console.log('PDF loaded successfully');
+    // } else {
+    //     console.log('Failed to load PDF');
+    // }
 
-    // ทำการทดสอบการเลื่อนภายใน iframe
-    await iframe.evaluate(() => {
-        window.scrollBy(0, 500);  // เลื่อนลง 500 พิกเซล
-    });
+    // // ทำการทดสอบการเลื่อนภายใน iframe
+    // await iframe.evaluate(() => {
+    //     window.scrollBy(0, 500);  // เลื่อนลง 500 พิกเซล
+    // });
 
-    // จับภาพหน้าจอเพื่อยืนยันการเลื่อน
-    await page.screenshot({ path: 'screenshot.png' });
+    // // จับภาพหน้าจอเพื่อยืนยันการเลื่อน
+    // await page.screenshot({ path: 'screenshot.png' });
+
+    const element = page.locator("(//div[@class='modal-body'])[1]")
+    await expect(element).toBeVisible()
+    // await page.locator("(//div[@class='modal-body'])[1]").click()
+
+    await page.screenshot({ path: `${Date.now()}-ผลการดุรายละเอียดสมัครเรียนออนไลน์.png` });
 });
 
 test('6. ขึ้นทะเบียนนักศึกษา', async ({ page }) => {
