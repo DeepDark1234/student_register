@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ main, master ]
   schedule:
-    - cron: "*/10 * * * *"  # รันทุก ๆ 10 นาที
+    - cron: "0 */4 * * *" # รันทุก ๆ 10 นาที
 jobs:
   test:
     timeout-minutes: 60
