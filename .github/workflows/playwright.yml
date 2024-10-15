@@ -4,6 +4,8 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  schedule:
+    - cron: "0 0 * * *"  # รันทุกวันเวลาเที่ยงคืน UTC (ทุก 24 ชั่วโมง)
 jobs:
   test:
     timeout-minutes: 60
