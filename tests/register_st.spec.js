@@ -21,258 +21,40 @@ const uniqueIds = generateUniqueIds(startingId, (daysPassed + (399 * (daysPassed
 test('1. สมัครเรียน ปีการศึกษา 2568', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
 
-    // // เข้าหน้า  register
-    // await page.locator("(//a[@id='dropdownMenuLink'])[1]").click()
-    // await page.locator("(//a[@id='btn-register-people'])[1]").click()
-
-    // // กรอกหมายเลขบัตรประชาชน
-    // await page.fill('#iDCard2', uniqueIds[0])
-    // await page.click('#loginbtn')
-
-    // // เช็ค radio คำนำหน้าชื่อ
-    // await page.check('input[type="radio"][id="sex1"][value="นาย"]')
-    // await page.check('input[type="radio"][id="sex2"][value="นาง"]')
-    // await page.check('input[type="radio"][id="sex3"][value="นางสาว"]')
-
-    // // กรอกข้อมูล
-    // await page.fill('#reg_fname', 'กรกนก')
-    // await page.fill('#reg_sname', 'กนกรก')
-    // await page.fill('#mobile', '0123456789')
-    // await page.fill('#end_deu', 'วิทคณิต')
-    // await page.fill('#shool', 'โรงเรียนเกษตรศาสตร์')
-
-    // // เช็คจังหวัด
-    // const province = '#ddlProvince'
-    // await dropdownCheck(page, province, 'สุรินทร์');
-    // await dropdownCheck(page, province, 'ศรีสะเกษ');
-    // await dropdownCheck(page, province, 'บุรีรัมย์');
-    // await dropdownCheck(page, province, 'กรุงเทพมหานคร');
-    // await dropdownCheck(page, province, 'กระบี่');
-    // await dropdownCheck(page, province, 'กาญจนบุรี');
-    // await dropdownCheck(page, province, 'กาฬสินธุ์');
-    // await dropdownCheck(page, province, 'กำแพงเพชร');
-    // await dropdownCheck(page, province, 'ขอนแก่น');
-    // await dropdownCheck(page, province, 'จันทบุรี');
-    // await dropdownCheck(page, province, 'ฉะเชิงเทรา');
-    // await dropdownCheck(page, province, 'ชัยนาท');
-    // await dropdownCheck(page, province, 'ชัยภูมิ');
-    // await dropdownCheck(page, province, 'ชุมพร');
-    // await dropdownCheck(page, province, 'ชลบุรี');
-    // await dropdownCheck(page, province, 'เชียงใหม่');
-    // await dropdownCheck(page, province, 'เชียงราย');
-    // await dropdownCheck(page, province, 'ตรัง');
-    // await dropdownCheck(page, province, 'ตราด');
-    // await dropdownCheck(page, province, 'ตาก');
-    // await dropdownCheck(page, province, 'นครนายก');
-    // await dropdownCheck(page, province, 'นครปฐม');
-    // await dropdownCheck(page, province, 'นครพนม');
-    // await dropdownCheck(page, province, 'นครราชสีมา');
-    // await dropdownCheck(page, province, 'นครศรีธรรมราช');
-    // await dropdownCheck(page, province, 'นครสวรรค์');
-    // await dropdownCheck(page, province, 'นราธิวาส');
-    // await dropdownCheck(page, province, 'น่าน');
-    // await dropdownCheck(page, province, 'นนทบุรี');
-    // await dropdownCheck(page, province, 'บึงกาฬ');
-    // await dropdownCheck(page, province, 'ประจวบคีรีขันธ์');
-    // await dropdownCheck(page, province, 'ปทุมธานี');
-    // await dropdownCheck(page, province, 'ปราจีนบุรี');
-    // await dropdownCheck(page, province, 'ปัตตานี');
-    // await dropdownCheck(page, province, 'พะเยา');
-    // await dropdownCheck(page, province, 'พระนครศรีอยุธยา');
-    // await dropdownCheck(page, province, 'พังงา');
-    // await dropdownCheck(page, province, 'พิจิตร');
-    // await dropdownCheck(page, province, 'พิษณุโลก');
-    // await dropdownCheck(page, province, 'เพชรบุรี');
-    // await dropdownCheck(page, province, 'เพชรบูรณ์');
-    // await dropdownCheck(page, province, 'แพร่');
-    // await dropdownCheck(page, province, 'พัทลุง');
-    // await dropdownCheck(page, province, 'ภูเก็ต');
-    // await dropdownCheck(page, province, 'มหาสารคาม');
-    // await dropdownCheck(page, province, 'มุกดาหาร');
-    // await dropdownCheck(page, province, 'แม่ฮ่องสอน');
-    // await dropdownCheck(page, province, 'ยโสธร');
-    // await dropdownCheck(page, province, 'ยะลา');
-    // await dropdownCheck(page, province, 'ร้อยเอ็ด');
-    // await dropdownCheck(page, province, 'ระนอง');
-    // await dropdownCheck(page, province, 'ระยอง');
-    // await dropdownCheck(page, province, 'ราชบุรี');
-    // await dropdownCheck(page, province, 'ลพบุรี');
-    // await dropdownCheck(page, province, 'ลำปาง');
-    // await dropdownCheck(page, province, 'ลำพูน');
-    // await dropdownCheck(page, province, 'เลย');
-    // await dropdownCheck(page, province, 'สกลนคร');
-    // await dropdownCheck(page, province, 'สงขลา');
-    // await dropdownCheck(page, province, 'สมุทรสาคร');
-    // await dropdownCheck(page, province, 'สมุทรปราการ');
-    // await dropdownCheck(page, province, 'สมุทรสงคราม');
-    // await dropdownCheck(page, province, 'สระแก้ว');
-    // await dropdownCheck(page, province, 'สระบุรี');
-    // await dropdownCheck(page, province, 'สิงห์บุรี');
-    // await dropdownCheck(page, province, 'สุโขทัย');
-    // await dropdownCheck(page, province, 'สุพรรณบุรี');
-    // await dropdownCheck(page, province, 'สุราษฎร์ธานี');
-    // await dropdownCheck(page, province, 'สตูล');
-    // await dropdownCheck(page, province, 'หนองคาย');
-    // await dropdownCheck(page, province, 'หนองบัวลำภู');
-    // await dropdownCheck(page, province, 'อำนาจเจริญ');
-    // await dropdownCheck(page, province, 'อุดรธานี');
-    // await dropdownCheck(page, province, 'อุตรดิตถ์');
-    // await dropdownCheck(page, province, 'อุทัยธานี');
-    // await dropdownCheck(page, province, 'อุบลราชธานี');
-    // await dropdownCheck(page, province, 'อ่างทอง');
-
-    // // เลือกการศึกษา
-    // await page.check('input[type="radio"][id="edu1"][value="1"]')
-    // await page.check('input[type="radio"][id="degree2"][value="2"]')
-    // const program = '#program'
-    // await dropdownCheck(page, program, '2220211');
-    // await page.click('#register_submit')
-    // await page.locator("(//a[@id='dropdownMenuLink'])[1]").click()
-    // await page.locator("(//a[@id='btn-register-merchant'])[1]").click()
-    // await page.locator("(//img[@class='img-fluid y'])[1]").click()
-
     // ทดสอบสร้างบัญชีทุกสาขา
     edu = 'input[type="radio"][id="edu1"][value="1"]'
     degree = 'input[type="radio"][id="degree1"][value="1"]'
 
     await programcheck(page, uniqueIds[1], edu, degree, '2210111'); // พืชศาสตร์ (ม.6)
     await programcheck(page, uniqueIds[2], edu, degree, '2210113'); // พืชศาสตร์ (ทวิภาคี)
-    // await programcheck(page, uniqueIds[3], edu, degree, '2210211'); // สัตวศาสตร์ (ม.6)
-    // await programcheck(page, uniqueIds[4], edu, degree, '2210311'); // เพาะเลี้ยงสัตว์น้ำ (ม.6)/ประมง
-    // await programcheck(page, uniqueIds[5], edu, degree, '2210313'); // เพาะเลี้ยงสัตว์น้ำ (ทวิภาคี) /ประมง
-    // await programcheck(page, uniqueIds[6], edu, degree, '2210411'); // อุตสาหกรรมอาหาร (ม.6)
-    // await programcheck(page, uniqueIds[7], edu, degree, '2210413'); // อุตสาหกรรมอาหาร (ทวิภาคี)
-    // await programcheck(page, uniqueIds[8], edu, degree, '2210511'); // เทคโนโลยีเครื่องจักรกลเกษตร (ม.6)
-    // await programcheck(page, uniqueIds[9], edu, degree, '2210611'); // เทคนิคยานยนต์ไฟฟ้า (ม.6)
-    // await programcheck(page, uniqueIds[10], edu, degree, '2210711'); // ไฟฟ้า (ม.6)
-    // await programcheck(page, uniqueIds[11], edu, degree, '2210811'); // เทคโนโลยีคอมพิวเตอร์ (ม.6)
-    // await programcheck(page, uniqueIds[12], edu, degree, '2210811'); // เทคโนโลยีคอมพิวเตอร์ (ทวิภาคี)
-    // await programcheck(page, uniqueIds[13], edu, degree, '2210911'); // เทคนิคการผลิต (ม.6) /เทคนิคอุตสาหกรรม
-    // await programcheck(page, uniqueIds[14], edu, degree, '2211011'); // ช่างก่อสร้าง (ม.6)
-    // await programcheck(page, uniqueIds[15], edu, degree, '2310111'); // การจัดการสมัยใหม่ (ม.6)
-    // await programcheck(page, uniqueIds[16], edu, degree, '2310112'); // การจัดการสมัยใหม่ (ม.6)
-    // await programcheck(page, uniqueIds[17], edu, degree, '2310211'); // การบัญชี (ม.6)
-    // await programcheck(page, uniqueIds[18], edu, degree, '2310212'); // การบัญชี (ม.6) (สมทบ)
-    // await programcheck(page, uniqueIds[19], edu, degree, '2310311'); // คอมพิวเตอร์ธุรกิจ (ม.6)
-    // await programcheck(page, uniqueIds[20], edu, degree, '2310312'); // คอมพิวเตอร์ธุรกิจ (ม.6) (สมทบ)
-    // await programcheck(page, uniqueIds[21], edu, degree, '2310411'); // เทคโนโลยีการตลาดสมัยใหม่ (ม.6)
 
     degree = 'input[type="radio"][id="degree2"][value="2"]'
 
     await programcheck(page, uniqueIds[22], edu, degree, '2220111'); // พืชศาสตร์ (ม.6)
     await programcheck(page, uniqueIds[23], edu, degree, '2220211'); // สัตวศาสตร์ (ม.6)
-    // await programcheck(page, uniqueIds[24], edu, degree, '2220311'); // เพาะเลี้ยงสัตว์น้ำ (ม.6)/ประมง
-    // await programcheck(page, uniqueIds[25], edu, degree, '2220511'); // การออกแบบภูมิทัศน์และการจัดสวน
-    // await programcheck(page, uniqueIds[26], edu, degree, '2220411'); // เทคโนโลยีการอาหาร (ม.6)
-    // await programcheck(page, uniqueIds[27], edu, degree, '2220611'); // สิ่งทอและการออกแบบภูมิปัญญาร่วมสมัย (ม.6) /เทคโนโลยีสิ่งทอและการออกแบบแฟชั่น
-    // await programcheck(page, uniqueIds[28], edu, degree, '2220711'); // วิทยาการคอมพิวเตอร์ (ม.6)
-    // await programcheck(page, uniqueIds[29], edu, degree, '2220811'); // เทคโนโลยีและการจัดการสิ่งแวดล้อม (ม.6)
-    // await programcheck(page, uniqueIds[30], edu, degree, '2220911'); // เทคโนโลยีชีวภาพการเกษตร (ม.6)
-    // await programcheck(page, uniqueIds[31], edu, degree, '2221011'); // เคมีประยุกต์ (ม.6)
-    // await programcheck(page, uniqueIds[32], edu, degree, '2221111'); // เทคโนโลยีคอมพิวเตอร์ (ม.6)
-    // await programcheck(page, uniqueIds[33], edu, degree, '2221211'); // วิศวกรรมเครื่องกล (วิศวกรรมเครื่องกล)(ม.6)
-    // await programcheck(page, uniqueIds[34], edu, degree, '2221311'); // วิศวกรรมเครื่องกล (วิศวกรรมยานยนต์)(ม.6)
-    // await programcheck(page, uniqueIds[35], edu, degree, '2221411'); // วิศวกรรมไฟฟ้า (ม.6)
-    // await programcheck(page, uniqueIds[36], edu, degree, '2221511'); // วิศวกรรมเครื่องจักรกลเกษตร(ม.6)
-    // await programcheck(page, uniqueIds[37], edu, degree, '2221611'); // วิศวกรรมเมคคาทรอนิกส์ (ม.6)
-    // await programcheck(page, uniqueIds[38], edu, degree, '2221711'); // วิศวกรรมการผลิตอัตโนมัติและหุ่นยนต์
-    // await programcheck(page, uniqueIds[39], edu, degree, '2320111'); // การจัดการสมัยใหม่ (ม.6)
-    // await programcheck(page, uniqueIds[40], edu, degree, '2320211'); // นวัตกรรมธุรกิจการค้า (ม.6)
-    // await programcheck(page, uniqueIds[41], edu, degree, '2320311'); // การบัญชี (ม.6)
-    // await programcheck(page, uniqueIds[42], edu, degree, '2320411'); // การตลาด (ม.6)
-    // await programcheck(page, uniqueIds[43], edu, degree, '2320511'); // เทคโนโลยีธุรกิจดิจิทัล (ม.6)
-    // await programcheck(page, uniqueIds[44], edu, degree, '2320711'); // การท่องเที่ยวและการโรงแรม (ม.6)
-    // await programcheck(page, uniqueIds[45], edu, degree, '2320811'); // ภาษาอังกฤษเพื่อการสื่อสาร (ม.6)
-    // await programcheck(page, uniqueIds[46], edu, degree, '2320611'); // เทคโนโลยีมัลติมีเดีย (ม.6)
-    // await programcheck(page, uniqueIds[47], edu, degree, '2221512'); // วิศวกรรมเครื่องจักรกลเกษตร (ม.6) (สมทบ)
 
     edu = 'input[type="radio"][id="edu2"][value="2"]'
     degree = 'input[type="radio"][id="degree1"][value="1"]'
 
     await programcheck(page, uniqueIds[48], edu, degree, '2210121'); // พืชศาสตร์ (ปวช.)
     await programcheck(page, uniqueIds[49], edu, degree, '2210221'); // สัตวศาสตร์ (ปวช.)
-    // await programcheck(page, uniqueIds[50], edu, degree, '2210321'); // เพาะเลี้ยงสัตว์น้ำ (ปวช.)/ประมง
-    // await programcheck(page, uniqueIds[51], edu, degree, '2210421'); // อุตสาหกรรมอาหาร (ปวช.)
-    // await programcheck(page, uniqueIds[52], edu, degree, '2210521'); // เทคโนโลยีเครื่องจักรกลเกษตร (ปวช.)
-    // await programcheck(page, uniqueIds[53], edu, degree, '2210621'); // เทคนิคยานยนต์ไฟฟ้า (ปวช.)
-    // await programcheck(page, uniqueIds[54], edu, degree, '2210721'); // ไฟฟ้า (ปวช.)
-    // await programcheck(page, uniqueIds[55], edu, degree, '2210821'); // เทคโนโลยีคอมพิวเตอร์ (ปวช.)
-    // await programcheck(page, uniqueIds[56], edu, degree, '2210821'); // เทคโนโลยีคอมพิวเตอร์ (ทวิภาคี)
-    // await programcheck(page, uniqueIds[57], edu, degree, '2210123'); // พืชศาสตร์ (ทวิภาคี)
-    // await programcheck(page, uniqueIds[58], edu, degree, '2210323'); // เพาะเลี้ยงสัตว์น้ำ (ทวิภาคี)
-    // await programcheck(page, uniqueIds[59], edu, degree, '2210423'); // อุตสาหกรรมอาหาร (ทวิภาคี)
-    // await programcheck(page, uniqueIds[60], edu, degree, '2210921'); // เทคนิคการผลิต (ปวช.) /เทคนิคอุตสาหกรรม
-    // await programcheck(page, uniqueIds[61], edu, degree, '2211021'); // ช่างก่อสร้าง (ปวช.)
-    // await programcheck(page, uniqueIds[62], edu, degree, '2310121'); // การจัดการสมัยใหม่ (ปวช.)
-    // await programcheck(page, uniqueIds[63], edu, degree, '2310122'); // การจัดการสมัยใหม่ (ปวช.)
-    // await programcheck(page, uniqueIds[64], edu, degree, '2310221'); // การบัญชี (ปวช.)
-    // await programcheck(page, uniqueIds[65], edu, degree, '2310222'); // การบัญชี (ปวช.) (สมทบ)
-    // await programcheck(page, uniqueIds[66], edu, degree, '2310321'); // คอมพิวเตอร์ธุรกิจ (ปวช.)
-    // await programcheck(page, uniqueIds[67], edu, degree, '2310322'); // คอมพิวเตอร์ธุรกิจ (ปวช.) (สมทบ)
-    // await programcheck(page, uniqueIds[68], edu, degree, '2310421'); // เทคโนโลยีการตลาดสมัยใหม่ (ปวช.)
 
     degree = 'input[type="radio"][id="degree2"][value="2"]'
 
     await programcheck(page, uniqueIds[69], edu, degree, '2220121'); // พืชศาสตร์ (ปวช.)
     await programcheck(page, uniqueIds[70], edu, degree, '2220221'); // สัตวศาสตร์ (ปวช.)
-    // await programcheck(page, uniqueIds[71], edu, degree, '2220321'); // เพาะเลี้ยงสัตว์น้ำ (ปวช.)/ประมง
-    // await programcheck(page, uniqueIds[72], edu, degree, '2220521'); // การออกแบบภูมิทัศน์และการจัดสวน (ปวช.)
-    // await programcheck(page, uniqueIds[73], edu, degree, '2220421'); // เทคโนโลยีการอาหาร (ปวช.)
-    // await programcheck(page, uniqueIds[74], edu, degree, '2220621'); // สิ่งทอและการออกแบบภูมิปัญญาร่วมสมัย (ปวช.) /เทคโนโลยีสิ่งทอและการออกแบบแฟชั่น
-    // await programcheck(page, uniqueIds[75], edu, degree, '2220721'); // วิทยาการคอมพิวเตอร์ (ปวช.)
-    // await programcheck(page, uniqueIds[76], edu, degree, '2220921'); // เทคโนโลยีชีวภาพการเกษตร (ปวช.)
-    // await programcheck(page, uniqueIds[77], edu, degree, '2221121'); // เทคโนโลยีคอมพิวเตอร์ (ปวช.)
-    // await programcheck(page, uniqueIds[78], edu, degree, '2221221'); // วิศวกรรมเครื่องกล (วิศวกรรมเครื่องกล)(ปวช.)
-    // await programcheck(page, uniqueIds[79], edu, degree, '2221321'); // วิศวกรรมเครื่องกล (วิศวกรรมยานยนต์)(ปวช.)
-    // await programcheck(page, uniqueIds[80], edu, degree, '2221421'); // วิศวกรรมไฟฟ้า (ปวช.)
-    // await programcheck(page, uniqueIds[81], edu, degree, '2221521'); // วิศวกรรมเครื่องจักรกลเกษตร (ปวช.)
-    // await programcheck(page, uniqueIds[82], edu, degree, '2221621'); // วิศวกรรมเมคคาทรอนิกส์ (ปวช.)
-    // await programcheck(page, uniqueIds[83], edu, degree, '2221721'); // วิศวกรรมการผลิตอัตโนมัติและหุ่นยนต์ (ปวช.)
-    // await programcheck(page, uniqueIds[84], edu, degree, '2320121'); // การจัดการสมัยใหม่ (ปวช.)
-    // await programcheck(page, uniqueIds[85], edu, degree, '2320221'); // นวัตกรรมธุรกิจการค้า (ปวช.)
-    // await programcheck(page, uniqueIds[86], edu, degree, '2320321'); // การบัญชี (ปวช.)
-    // await programcheck(page, uniqueIds[87], edu, degree, '2320421'); // การตลาด (ปวช.)
-    // await programcheck(page, uniqueIds[88], edu, degree, '2320521'); // เทคโนโลยีธุรกิจดิจิทัล (ปวช.)
-    // await programcheck(page, uniqueIds[89], edu, degree, '2320721'); // การท่องเที่ยวและการโรงแรม (ปวช.)
-    // await programcheck(page, uniqueIds[90], edu, degree, '2320821'); // ภาษาอังกฤษเพื่อการสื่อสาร (ปวช.)
-    // await programcheck(page, uniqueIds[91], edu, degree, '2320621'); // เทคโนโลยีมัลติมีเดีย (ปวช.)
-    // await programcheck(page, uniqueIds[92], edu, degree, '2221522'); // วิศวกรรมเครื่องจักรกลเกษตร (ปวช.) สมทบ
 
     edu = 'input[type="radio"][id="edu3"][value="3"]'
     degree = 'input[type="radio"][id="degree1"][value="4"]'
 
     await programcheck(page, uniqueIds[93], edu, degree, '2330131'); // การจัดการสมัยใหม่
     await programcheck(page, uniqueIds[94], edu, degree, '2330132'); // การจัดการสมัยใหม่ (สมทบ)
-    // await programcheck(page, uniqueIds[95], edu, degree, '2330231'); // นวัตกรรมธุรกิจการค้า
-    // await programcheck(page, uniqueIds[96], edu, degree, '2330331'); // การบัญชี
-    // await programcheck(page, uniqueIds[97], edu, degree, '2330332'); // การบัญชี (สมทบ)
-    // await programcheck(page, uniqueIds[98], edu, degree, '2330431'); // เทคโนโลยีธุรกิจดิจิทัล
-    // await programcheck(page, uniqueIds[99], edu, degree, '2330432'); // เทคโนโลยีธุรกิจดิจิทัล (สมทบ)
-    // await programcheck(page, uniqueIds[100], edu, degree, '2330531'); // เทคโนโลยีมัลติมีเดีย
-    // await programcheck(page, uniqueIds[101], edu, degree, '2330631'); // การตลาด
-    // await programcheck(page, uniqueIds[102], edu, degree, '2330731'); // การท่องเที่ยวและการโรงแรม
-    // await programcheck(page, uniqueIds[103], edu, degree, '2330831'); // ภาษาอังกฤษเพื่อการสื่อสาร
-    // await programcheck(page, uniqueIds[104], edu, degree, '2230131'); // พืชศาสตร์
-    // await programcheck(page, uniqueIds[105], edu, degree, '2230231'); // สัตวศาสตร์
-    // await programcheck(page, uniqueIds[106], edu, degree, '2230331'); // เพาะเลี้ยงสัตวน้ำ /ประมง
-    // await programcheck(page, uniqueIds[107], edu, degree, '2230431'); // เทคโนโลยีการอาหาร
-    // await programcheck(page, uniqueIds[108], edu, degree, '2230531'); // สิ่งทอและการออกแบบภูมิปัญญาร่วมสมัย /เทคโนโลยีสิ่งทอและการออกแบบแฟชั่น
-    // await programcheck(page, uniqueIds[109], edu, degree, '2230631'); // วิทยาการคอมพิวเตอร์
-    // await programcheck(page, uniqueIds[110], edu, degree, '2230731'); // เทคโนโลยีคอมพิวเตอร์
-    // await programcheck(page, uniqueIds[111], edu, degree, '2230831'); // วิศวกรรมเครื่องกล (วิศวกรรมเครื่องกล)
-    // await programcheck(page, uniqueIds[112], edu, degree, '2230931'); // วิศวกรรมเครื่องกล (วิศวกรรมยานยนต์)
-    // await programcheck(page, uniqueIds[113], edu, degree, '2231031'); // วิศวกรรมไฟฟ้า
-    // await programcheck(page, uniqueIds[114], edu, degree, '2231131'); // วิศวกรรมเครื่องจักรกลเกษตร
-    // await programcheck(page, uniqueIds[115], edu, degree, '2231132'); // วิศวกรรมเครื่องจักรกลเกษตร (สมทบ)
-    // await programcheck(page, uniqueIds[116], edu, degree, '2231231'); // เทคโนโลยีไฟฟ้า (ต่อเนื่อง)
 
     edu = 'input[type="radio"][id="edu4"][value="4"]'
     degree = 'input[type="radio"][id="degree1"][value="3"]'
 
     await programcheck(page, uniqueIds[117], edu, degree, '2240141'); // เทคโนโลยีการเกษตร
     await programcheck(page, uniqueIds[118], edu, degree, '2240142'); // เทคโนโลยีการเกษตร (สมทบ)
-    // await programcheck(page, uniqueIds[119], edu, degree, '2340142'); // การจัดการสมัยใหม่ (แผน 1 แบบวิชาการ) (สมทบ)
-    // await programcheck(page, uniqueIds[120], edu, degree, '2340242'); // การจัดการสมัยใหม่ (แผน 2 แบบวิชาชีพ) (สมทบ)
 
     edu = 'input[type="radio"][id="edu5"][value="6"]'
     degree = 'input[type="radio"][id="degree1"][value="5"]'
@@ -563,7 +345,7 @@ test('3.5 ตรวจสอบลิ้งค์ขัั้นตอนกา�
     await page.screenshot({ path: `${Date.now()}-ผลการตรวจสอบลิ้งค์ขัั้นตอนการลงทะเบียนนักศึกษา.png` });
 });
 
-test('5.1 ประกาศรับสมัครนักศึกษา', async ({ page }) => {
+test('4.1 ประกาศรับสมัครนักศึกษา', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
 
     // หาลิงก์
@@ -597,7 +379,7 @@ test('5.1 ประกาศรับสมัครนักศึกษา', a
     await page.screenshot({ path: `${Date.now()}-เปิดหน้าประกาศรับสมัครนักศึกษา.png` });
 });
 
-test('5.2 ค่าใช้จ่าย', async ({ page }) => {
+test('4.2 ค่าใช้จ่าย', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/staff/index.php');
 
     // เข้าถึง iframe
@@ -614,7 +396,7 @@ test('5.2 ค่าใช้จ่าย', async ({ page }) => {
 });
 
 
-test('5.3 แจ้งชำระเงิน', async ({ page }) => {
+test('4.3 แจ้งชำระเงิน', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/staff/index.php');
 
     // เข้าถึง iframe
@@ -632,7 +414,7 @@ test('5.3 แจ้งชำระเงิน', async ({ page }) => {
     await page.pause();
 });
 
-test('5.4 แผนที่มหาลัย', async ({ page }) => {
+test('4.4 แผนที่มหาลัย', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/staff/index.php');
 
     const link = await page.locator("(//a[contains(text(),'แผนที่มหาวิทยาลัย')])[1]")
@@ -645,7 +427,7 @@ test('5.4 แผนที่มหาลัย', async ({ page }) => {
     await page.screenshot({ path: `${Date.now()}-ผลการเช็คลิ้งค์ แผนที่มหาลัย.png` });
 });
 
-test('5.5 ติดต่อเรา', async ({ page }) => {
+test('4.5 ติดต่อเรา', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/staff/index.php');
     const link = await page.locator("(//a[contains(text(),'ติดต่อเรา')])[1]")
     await expect(link).toBeVisible()
@@ -654,7 +436,7 @@ test('5.5 ติดต่อเรา', async ({ page }) => {
     await page.screenshot({ path: `${Date.now()}-ผลการเช็คลิ้งติดต่อเรา.png` });
 });
 
-test('5.6 facebook', async ({ page }) => {
+test('4.6 facebook', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/staff/index.php');
     const link = await page.locator("(//a[@class='my-facebook'])[1]")
     await expect(link).toBeVisible()
@@ -666,7 +448,31 @@ test('5.6 facebook', async ({ page }) => {
     await page.screenshot({ path: `${Date.now()}-ผลการเช็คลิ้ง facebook.png` });
 });
 
-test('7. ขึ้นทะเบียนนักศึกษา', async ({ page }) => {
+test('5. ดูรายละเอียดสมัครเรียนออนไลน์', async ({ page }) => {
+    // ไปที่หน้าเว็บที่ต้องการทดสอบ
+    await page.goto('https://www.surin.rmuti.ac.th/staff/index.php'); // หรือ URL จริงของหน้าเว็บ
+
+    // รอให้ iframe โหลดเสร็จ
+    const iframeElement = await page.waitForSelector('iframe#headline');
+
+    // ตรวจสอบว่า iframe ถูกโหลดแล้วหรือไม่
+    const iframe = await iframeElement.contentFrame();
+    if (iframe) {
+        console.log('PDF loaded successfully');
+    } else {
+        console.log('Failed to load PDF');
+    }
+
+    // ทำการทดสอบการเลื่อนภายใน iframe
+    await iframe.evaluate(() => {
+        window.scrollBy(0, 500);  // เลื่อนลง 500 พิกเซล
+    });
+
+    // จับภาพหน้าจอเพื่อยืนยันการเลื่อน
+    await page.screenshot({ path: 'screenshot.png' });
+});
+
+test('6. ขึ้นทะเบียนนักศึกษา', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php'); // เปลี่ยนเป็น URL ของคุณ
 
     const link = await page.locator("(//a[contains(text(),'ขึ้นทะเบียน')])[1]");
@@ -686,58 +492,58 @@ test('7. ขึ้นทะเบียนนักศึกษา', async ({ pa
 });
 
 // นี่มันเว็บจริงไอน้อง
-// test('8. แจ้งยืนยันการชำระเงิน', async ({ page }) => {
-//     await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
+test('7. แจ้งยืนยันการชำระเงิน', async ({ page }) => {
+    await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
 
-//     // หาลิงก์ "คู่มือการสมัครเรียน"
-//     const link = await page.locator("(//a[contains(text(),'แจ้งยืนยันการชำระเงิน')])[1]");
-//     // ตรวจสอบว่าลิงก์มีอยู่
-//     await expect(link).toBeVisible();
-//     // คลิกที่ลิงก์ "คู่มือการสมัครเรียน" และรอให้แท็บใหม่เปิดขึ้น
-//     const [newPage] = await Promise.all([
-//         page.waitForEvent('popup'), // รอให้แท็บใหม่เปิดขึ้น
-//         link.click(), // คลิกที่ลิงก์
-//     ]);
-//     // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
-//     await expect(newPage).toHaveURL('https://payment.surin.rmuti.ac.th/2023/');
+    // หาลิงก์ "คู่มือการสมัครเรียน"
+    const link = await page.locator("(//a[contains(text(),'แจ้งยืนยันการชำระเงิน')])[1]");
+    // ตรวจสอบว่าลิงก์มีอยู่
+    await expect(link).toBeVisible();
+    // คลิกที่ลิงก์ "คู่มือการสมัครเรียน" และรอให้แท็บใหม่เปิดขึ้น
+    const [newPage] = await Promise.all([
+        page.waitForEvent('popup'), // รอให้แท็บใหม่เปิดขึ้น
+        link.click(), // คลิกที่ลิงก์
+    ]);
+    // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
+    await expect(newPage).toHaveURL('https://payment.surin.rmuti.ac.th/2023/');
 
-//     await page.goto('https://payment.surin.rmuti.ac.th/2023/');
-//     await page.locator('#login').click();
-//     await page.locator('#login').fill('1000000000017');
-//     await page.getByRole('button', { name: 'LOGIN' }).click();
-//     await page.getByRole('link', { name: 'คลิก' }).click();
-//     await page.getByLabel('บัญชีธนาคารของมหาลัยฯ').selectOption('1');
-//     await page.locator('#payment_type_id').selectOption('10');
-//     await page.locator('#payment_number').fill('0');
-//     await page.getByLabel('โอนจากธนาคาร').selectOption('1');
-//     await page.getByLabel('วันที่ชำระ').fill('2024-10-24');
-//     await page.fill('#payment_time', '14:30');
-//     await page.getByLabel('ยอดโอน(บาท)').click();
-//     await page.getByLabel('ยอดโอน(บาท)').fill('9999');
-//     await page.locator('#PaymentForm div').filter({ hasText: 'โอนจากธนาคาร - กรุงเทพ' }).first().click();
+    await page.goto('https://payment.surin.rmuti.ac.th/2023/');
+    await page.locator('#login').click();
+    await page.locator('#login').fill('1000000000017');
+    await page.getByRole('button', { name: 'LOGIN' }).click();
+    await page.getByRole('link', { name: 'คลิก' }).click();
+    await page.getByLabel('บัญชีธนาคารของมหาลัยฯ').selectOption('1');
+    await page.locator('#payment_type_id').selectOption('10');
+    await page.locator('#payment_number').fill('0');
+    await page.getByLabel('โอนจากธนาคาร').selectOption('1');
+    await page.getByLabel('วันที่ชำระ').fill('2024-10-24');
+    await page.fill('#payment_time', '14:30');
+    await page.getByLabel('ยอดโอน(บาท)').click();
+    await page.getByLabel('ยอดโอน(บาท)').fill('9999');
+    await page.locator('#PaymentForm div').filter({ hasText: 'โอนจากธนาคาร - กรุงเทพ' }).first().click();
 
-//     // // Click input[name="file-upload"]
-//     // await page.locator("(//input[@id='payment_files'])[1]").click();
-//     // // Upload fixture.pdf
-//     // await page.locator("(//input[@id='payment_files'])[1]").setInputFiles('wll.png');
-//     // // Click text=fixture.pdf
-//     // await page.locator('text=wll.png').click();
+    // // Click input[name="file-upload"]
+    // await page.locator("(//input[@id='payment_files'])[1]").click();
+    // // Upload fixture.pdf
+    // await page.locator("(//input[@id='payment_files'])[1]").setInputFiles('wll.png');
+    // // Click text=fixture.pdf
+    // await page.locator('text=wll.png').click();
 
-//     const handle = page.locator('input[type="file"]');
-//     await handle.setInputFiles("D:/coding/miniproject/wll.png");
+    const handle = page.locator('input[type="file"]');
+    await handle.setInputFiles("D:/coding/miniproject/wll.png");
 
-//     page.once("dialog", (dialog) => {
-//         console.log(dialog.message());
-//         dialog.accept();
-//     });
+    page.once("dialog", (dialog) => {
+        console.log(dialog.message());
+        dialog.accept();
+    });
 
 
-//     await page.getByRole('button', { name: 'แจ้งชำระ' }).click();
-//     await page.pause();
-//     await page.screenshot({ path: `${Date.now()}-ผลการแจ้งชำระเงิน.png` });
-// });
+    await page.getByRole('button', { name: 'แจ้งชำระ' }).click();
+    await page.pause();
+    await page.screenshot({ path: `${Date.now()}-ผลการแจ้งชำระเงิน.png` });
+});
 
-test('10. สามารถ logout ได้', async ({ page }) => {
+test('8. สามารถ logout ได้', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
 
     // เข้าหน้า  register
