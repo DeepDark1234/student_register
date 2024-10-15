@@ -7,6 +7,17 @@ const { defineConfig, devices } = require('@playwright/test');
  */
 // require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
+
+// export default defineConfig({
+//   use: {
+//     // บันทึกวิดีโอสำหรับการทดสอบ
+//     video: 'on',  // 'on', 'retain-on-failure', 'on-first-retry' หรือ 'off'
+
+//     // ระบุโฟลเดอร์ที่เก็บวิดีโอ
+//     outputDir: 'D:/videos/', // วิดีโอจะถูกบันทึกในโฟลเดอร์นี้
+//   },
+// });
+
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -27,8 +38,13 @@ module.exports = defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
+    trace: 'on',
+    // screensho: 'on',
+    video: 'on'
+
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    // trace: 'on-first-retry',
   },
 
   /* Configure projects for major browsers */

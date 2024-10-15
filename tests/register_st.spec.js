@@ -16,7 +16,7 @@ const daysPassed = getDaysPassed(startDate);
 const uniqueIds = generateUniqueIds(startingId, (daysPassed + (399 * (daysPassed - 1))), 400);
 
 //  แสดงหนมายเลขออกมาทาง  terminal
-console.log(`Today's Unique IDs: ${uniqueIds.join(', ')}`);
+// console.log(`Today's Unique IDs: ${uniqueIds.join(', ')}`);
 
 test('1. สมัครเรียน ปีการศึกษา 2568', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
@@ -628,6 +628,8 @@ test('5.3 แจ้งชำระเงิน', async ({ page }) => {
 
     await expect(page).toHaveURL('https://payment.surin.rmuti.ac.th/2023/');
     await page.screenshot({ path: `${Date.now()}-ผลการเช็คลิ้ง.png` });
+
+    await page.pause();
 });
 
 test('5.4 แผนที่มหาลัย', async ({ page }) => {
@@ -730,6 +732,7 @@ test('8. แจ้งยืนยันการชำระเงิน', async
 
 
     await page.getByRole('button', { name: 'แจ้งชำระ' }).click();
+    await page.pause();
     await page.screenshot({ path: `${Date.now()}-ผลการแจ้งชำระเงิน.png` });
 });
 
