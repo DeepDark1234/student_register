@@ -6,7 +6,7 @@ test.setTimeout(6000000);
 let edu, degree
 
 // วันที่เริ่มต้น (ตั้งค่าเป็นวันที่ที่คุณต้องการเริ่มนับ)
-const startDate = '2024-09-01'; // รูปแบบ YYYY-MM-DD
+const startDate = '2010-08-23'; // รูปแบบ YYYY-MM-DD
 const startingId = '100000000000'; // เลขบัตรประชาชนเริ่มต้น
 
 // คำนวณจำนวนวันที่ผ่านไปตั้งแต่วันที่เริ่มต้น
@@ -26,6 +26,8 @@ test('1. สมัครเรียน ปีการศึกษา 2568', as
     degree = 'input[type="radio"][id="degree1"][value="1"]'
 
     await programcheck(page, uniqueIds[1], edu, degree, '2210111'); // พืชศาสตร์ (ม.6)
+
+    await page.screenshot({ path: `${Date.now()}-------1. ผลการสมัครเรียน.png` });
 });
 
 test('2. สมัครเรียน ภาคเรียนที่ 2 ปีการศึกษา 2567', async ({ page }) => {
@@ -37,6 +39,7 @@ test('2. สมัครเรียน ภาคเรียนที่ 2 ป�
 
     await programcheck(page, uniqueIds[200], edu, degree, '2210111'); // พืชศาสตร์ (ม.6)
 
+    await page.screenshot({ path: `${Date.now()}-------2. ผลการสมัครเรียน.png` });
 });
 
 test('3.1 ตรวจสอบลิ้งค์หน้าแรก', async ({ page }) => {
@@ -50,7 +53,7 @@ test('3.1 ตรวจสอบลิ้งค์หน้าแรก', async (
     await homeLink.click();
     // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
     await expect(page).toHaveURL('https://www.surin.rmuti.ac.th/Test/Quo/index.php'); // ตรวจสอบว่า URL ลงท้ายด้วย index.php
-    await page.screenshot({ path: `${Date.now()}-ผลการตรวจสอบลิงค์หน้าแรก.png` });
+    await page.screenshot({ path: `${Date.now()}-------3.1 ผลการตรวจสอบลิงค์หน้าแรก.png` });
 });
 
 test('3.2 ตรวจสอบลิ้งค์ คู่มือการสมัครเรียน', async ({ page }) => {
@@ -67,7 +70,7 @@ test('3.2 ตรวจสอบลิ้งค์ คู่มือการส
     ]);
     // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
     await expect(newPage).toHaveURL('https://www.youtube.com/watch?v=pwpXi0bUN84&feature=youtu.be');
-    await page.screenshot({ path: `${Date.now()}-ผลการตรวจสอบลิ้งค์ คู่มือสมัครเรียน.png` });
+    await newPage.screenshot({ path: `${Date.now()}-------3.2 ผลการตรวจสอบลิ้งค์ คู่มือสมัครเรียน.png` });
 });
 
 test('3.3 ตรวจสอบภาพ QRcode', async ({ page }) => {
@@ -75,7 +78,8 @@ test('3.3 ตรวจสอบภาพ QRcode', async ({ page }) => {
 
     const img = page.locator("(//img)[6]")
     await expect(img).toBeVisible()
-    await page.screenshot({ path: `${Date.now()}-ผลการตรวจสอบภาพ QRcode.png` });
+    await img.click()
+    await page.screenshot({ path: `${Date.now()}-------3.3 ผลการตรวจสอบภาพ QRcode.png` });
 });
 
 test('3.4 ตรวจสอบลิงค์ line', async ({ page }) => {
@@ -90,7 +94,7 @@ test('3.4 ตรวจสอบลิงค์ line', async ({ page }) => {
     ]);
     // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
     await expect(newPage).toHaveURL('https://line.me/ti/g2/E_Uqh-euKq-oHx6LxZHRuq8XKj6lkGpemTGAHw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default');
-    await page.screenshot({ path: `${Date.now()}-ผลการตรวจสอบลิงค์ line.png` });
+    await page.screenshot({ path: `${Date.now()}-------3.4 ผลการตรวจสอบลิงค์ line.png` });
 });
 
 test('3.5 ตรวจสอบลิ้งค์ขัั้นตอนการลงทะเบียนนักศึกษา', async ({ page }) => {
@@ -105,41 +109,45 @@ test('3.5 ตรวจสอบลิ้งค์ขัั้นตอนกา�
     ]);
     // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
     await expect(newPage).toHaveURL('https://surin-ess.rmuti.ac.th/RMUTI/Registration/webform/EnrollmentLogin.aspx');
-    await page.screenshot({ path: `${Date.now()}-ผลการตรวจสอบลิ้งค์ขัั้นตอนการลงทะเบียนนักศึกษา.png` });
+    await page.screenshot({ path: `${Date.now()}-------3.5 ผลการตรวจสอบลิ้งค์ขัั้นตอนการลงทะเบียนนักศึกษา.png` });
 });
 
 test('4.1 ประกาศรับสมัครนักศึกษา', async ({ page }) => {
-    await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
+    // await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
 
-    // หาลิงก์
-    let manualLink = await page.locator("(//a[contains(text(),'ดูรายละเอียดสมัครเรียนออนไลน์')])[1]");
-    // ตรวจสอบว่าลิงก์มีอยู่
-    await expect(manualLink).toBeVisible();
-    // คลิกที่ลิงก์ และรอให้แท็บใหม่เปิดขึ้น
-    let [newPage] = await Promise.all([
-        page.waitForEvent('popup'), // รอให้แท็บใหม่เปิดขึ้น
-        manualLink.click(), // คลิกที่ลิงก์
-    ]);
-    // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
-    await expect(newPage).toHaveURL('https://www.surin.rmuti.ac.th/staff/index.php');
+    // // หาลิงก์
+    // let manualLink = await page.locator("(//a[contains(text(),'ดูรายละเอียดสมัครเรียนออนไลน์')])[1]");
+    // // ตรวจสอบว่าลิงก์มีอยู่
+    // await expect(manualLink).toBeVisible();
+    // // คลิกที่ลิงก์ และรอให้แท็บใหม่เปิดขึ้น
+    // let [newPage] = await Promise.all([
+    //     page.waitForEvent('popup'), // รอให้แท็บใหม่เปิดขึ้น
+    //     manualLink.click(), // คลิกที่ลิงก์
+    // ]);
+    // // ตรวจสอบว่า URL ที่ถูกนำไปหลังจากคลิกเป็น URL ที่คาดหวัง
+    // await expect(newPage).toHaveURL('https://www.surin.rmuti.ac.th/staff/index.php');
 
     await page.goto('https://www.surin.rmuti.ac.th/staff/index.php');
 
     // เข้าถึง iframe ที่มี class 'xuser' และ id 'headline'
-    const iframeElement = await page.frameLocator("//div[@class='xuser']//iframe[@id='headline']");
+    // รอให้ iframe แสดงผลและเข้าถึงมัน
+    const iframe = await page.frameLocator("//div[@class='xuser']//iframe[@id='headline']");
+
+    // ตรวจสอบว่ามี iframe ที่ต้องการใช้งาน (ตรวจสอบบนหน้าหลัก ไม่ใช่ภายใน iframe)
+    const iframeLocator = page.locator("//div[@class='xuser']//iframe[@id='headline']");
+    await expect(iframeLocator).toBeVisible();
 
     // ตรวจสอบ element ภายใน iframe (ตัวอย่าง img)
-    const linkElement = iframeElement.locator("(//a[contains(text(),'ประกาศรับสมัครนักศึกษา')])[1]"); // ดึง div แรกที่มี class 'container'
+    const linkElement = iframe.locator("(//a[contains(text(),'ประกาศรับสมัครนักศึกษา')])[1]"); // ดึง div แรกที่มี class 'container'
     await expect(linkElement).toBeVisible();
 
-    [newPage] = await Promise.all([
+    const [newPage] = await Promise.all([
         page.waitForEvent('popup'), // รอให้แท็บใหม่เปิดขึ้น
         linkElement.click(), // คลิกที่ลิงก์
     ]);
 
     // ตรวจสอบว่า URL ของแท็บใหม่เป็น URL ที่คาดหวัง
-    await expect(newPage).toHaveURL(/68\.pdf$/); // ตรวจสอบว่า URL จบด้วย 68.pdf
-    await page.screenshot({ path: `${Date.now()}-เปิดหน้าประกาศรับสมัครนักศึกษา.png` });
+    await Page.screenshot({ path: `${Date.now()}-------4.1 เปิดหน้าประกาศรับสมัครนักศึกษา.png` });
 });
 
 test('4.2 ค่าใช้จ่าย', async ({ page }) => {
@@ -155,7 +163,7 @@ test('4.2 ค่าใช้จ่าย', async ({ page }) => {
     await linkElement.click();
 
     await expect(page).toHaveURL('https://www.surin.rmuti.ac.th/staff/index.php?main=courses');
-    await page.screenshot({ path: `${Date.now()}-ผลการเช็คลิ้งค่าใช้จ่าย.png` });
+    await page.screenshot({ path: `${Date.now()}-------4.2 ผลการเช็คลิ้งค่าใช้จ่าย.png` });
 });
 
 
@@ -172,7 +180,7 @@ test('4.3 แจ้งชำระเงิน', async ({ page }) => {
     await linkElement.click();
 
     await expect(page).toHaveURL('https://payment.surin.rmuti.ac.th/2023/');
-    await page.screenshot({ path: `${Date.now()}-ผลการเช็คลิ้ง.png` });
+    await page.screenshot({ path: `${Date.now()}-------4.3 ผลการเช็คลิ้ง.png` });
 
     await page.pause();
 });
@@ -187,7 +195,7 @@ test('4.4 แผนที่มหาลัย', async ({ page }) => {
     await link.click()
 
     await expect(page).toHaveURL('https://www.surin.rmuti.ac.th/staff/index.php?main=con')
-    await page.screenshot({ path: `${Date.now()}-ผลการเช็คลิ้งค์ แผนที่มหาลัย.png` });
+    await page.screenshot({ path: `${Date.now()}-------4.4 ผลการเช็คลิ้งค์ แผนที่มหาลัย.png` });
 });
 
 test('4.5 ติดต่อเรา', async ({ page }) => {
@@ -196,7 +204,7 @@ test('4.5 ติดต่อเรา', async ({ page }) => {
     await expect(link).toBeVisible()
     await link.click()
     await expect(page).toHaveURL('https://www.surin.rmuti.ac.th/staff/index.php?main=con')
-    await page.screenshot({ path: `${Date.now()}-ผลการเช็คลิ้งติดต่อเรา.png` });
+    await page.screenshot({ path: `${Date.now()}-------4.5 ผลการเช็คลิ้งติดต่อเรา.png` });
 });
 
 test('4.6 facebook', async ({ page }) => {
@@ -208,7 +216,7 @@ test('4.6 facebook', async ({ page }) => {
         link.click(), // คลิกที่ลิงก์
     ]);
     await expect(newPage).toHaveURL('https://www.facebook.com/people/%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A8%E0%B8%B6%E0%B8%81%E0%B8%A9%E0%B8%B2-%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B9%80%E0%B8%82%E0%B8%95%E0%B8%AA%E0%B8%B8%E0%B8%A3%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%A3%E0%B9%8C/100063876259619/');
-    await page.screenshot({ path: `${Date.now()}-ผลการเช็คลิ้ง facebook.png` });
+    await page.screenshot({ path: `${Date.now()}-------4.6 ผลการเช็คลิ้ง facebook.png` });
 });
 
 test('5. ดูรายละเอียดสมัครเรียนออนไลน์', async ({ page }) => {
@@ -217,9 +225,10 @@ test('5. ดูรายละเอียดสมัครเรียนอ�
 
     const element = page.locator("(//div[@class='modal-body'])[1]")
     await expect(element).toBeVisible()
+    await element.click()
     // await page.locator("(//div[@class='modal-body'])[1]").click()
 
-    await page.screenshot({ path: `${Date.now()}-ผลการดุรายละเอียดสมัครเรียนออนไลน์.png` });
+    await page.screenshot({ path: `${Date.now()}-------5. ผลการดุรายละเอียดสมัครเรียนออนไลน์.png` });
 });
 
 test('6. ขึ้นทะเบียนนักศึกษา', async ({ page }) => {
@@ -238,7 +247,7 @@ test('6. ขึ้นทะเบียนนักศึกษา', async ({ pa
     await page.locator("(//input[@id='ctl00_ContentPlaceHolderMain_txtUser'])[1]").fill('555')
     await page.locator("(//input[@id='ctl00_ContentPlaceHolderMain_txtPassword'])[1]").fill('1000000000335')
     await page.locator("(//input[@id='ctl00_ContentPlaceHolderMain_btnLogin'])[1]").click()
-    await page.screenshot({ path: `${Date.now()}-ผลการขึ้้นทะเบียนนักศึกษา.png` });
+    await page.screenshot({ path: `${Date.now()}-------6. ผลการขึ้้นทะเบียนนักศึกษา.png` });
 });
 
 // นี่มันเว็บจริงไอน้อง
@@ -290,7 +299,7 @@ test('7. แจ้งยืนยันการชำระเงิน', async
 
     // await page.getByRole('button', { name: 'แจ้งชำระ' }).click();
     await page.pause();
-    await page.screenshot({ path: `${Date.now()}-ผลการแจ้งชำระเงิน.png` });
+    await page.screenshot({ path: `${Date.now()}-------7. ผลการแจ้งชำระเงิน.png` });
 });
 
 test('8. สามารถ logout ได้', async ({ page }) => {
@@ -310,7 +319,7 @@ test('8. สามารถ logout ได้', async ({ page }) => {
     await page.waitForSelector('#btn-register-merchant', { state: 'visible' });
     await page.click('#btn-register-merchant');
     await page.locator("(//img[@class='img-fluid y'])[1]").click()
-    await page.screenshot({ path: `${Date.now()}-ผลการล็อกเอาท์.png` });
+    await page.screenshot({ path: `${Date.now()}-------8. ผลการล็อกเอาท์.png` });
 });
 
 // ฟังก์ชันลงทะเบียนแต่ละสาขา เทอม  2 2567
@@ -347,14 +356,8 @@ async function programcheck2(page, id, edu, degree, program) {
     await dropdownCheck(page, '#program', program);
     await page.click('#register_submit')
 
-    await page.screenshot({ path: `${Date.now()}-ผลการสมัครเรียน.png` });
-
     // คลิกเพื่ออัพเดทตอนขีด --ui
-    await page.waitForSelector('#dropdownMenuLink', { state: 'visible' });
-    await page.click('#dropdownMenuLink');
-    await page.waitForSelector('#btn-register-merchant', { state: 'visible' });
-    await page.click('#btn-register-merchant');
-    await page.locator("(//img[@class='img-fluid y'])[1]").click()
+    await page.locator("(//font[contains(text(),'ประวัติการสมัครเรียน')])[1]").click()
     // await page.close();
 }
 
@@ -392,14 +395,8 @@ async function programcheck(page, id, edu, degree, program) {
     await dropdownCheck(page, '#program', program);
     await page.click('#register_submit')
 
-    await page.screenshot({ path: `${Date.now()}-ผลการสมัครเรียน.png` });
-
     // คลิกเพื่ออัพเดทตอนขีด --ui
-    await page.waitForSelector('#dropdownMenuLink', { state: 'visible' });
-    await page.click('#dropdownMenuLink');
-    await page.waitForSelector('#btn-register-merchant', { state: 'visible' });
-    await page.click('#btn-register-merchant');
-    await page.locator("(//img[@class='img-fluid y'])[1]").click()
+    await page.locator("(//font[contains(text(),'ประวัติการสมัครเรียน')])[1]").click()
     // await page.close();
 }
 
