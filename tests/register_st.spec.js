@@ -6,7 +6,7 @@ test.setTimeout(6000000);
 let edu, degree
 
 // วันที่เริ่มต้น (ตั้งค่าเป็นวันที่ที่คุณต้องการเริ่มนับ)
-const startDate = '2010-08-16'; // รูปแบบ YYYY-MM-DD
+const startDate = '2010-08-10'; // รูปแบบ YYYY-MM-DD
 const startingId = '100000000000'; // เลขบัตรประชาชนเริ่มต้น
 
 // คำนวณจำนวนวันที่ผ่านไปตั้งแต่วันที่เริ่มต้น
@@ -18,36 +18,6 @@ const uniqueIds = generateUniqueIds(startingId, (daysPassed + (399 * (daysPassed
 //  แสดงหนมายเลขออกมาทาง  terminal
 // console.log(`Today's Unique IDs: ${uniqueIds.join(', ')}`);
 
-test('1. สมัครเรียน ปีการศึกษา 2568', async ({ page }) => {
-    await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
-
-    // ทดสอบสร้างบัญชีทุกสาขา
-    edu = 'input[type="radio"][id="edu1"][value="1"]'
-    degree = 'input[type="radio"][id="degree1"][value="1"]'
-
-    await programcheck(page, uniqueIds[1], edu, degree, '2210111'); // พืชศาสตร์ (ม.6)
-
-
-    await page.screenshot({
-        path: path.join(__dirname, 'playwright-report', `${Date.now()}-------1. ผลการสมัครเรียน.png`)
-    });
-
-});
-
-test('2. สมัครเรียน ภาคเรียนที่ 2 ปีการศึกษา 2567', async ({ page }) => {
-    await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
-
-    // ทดสอบสร้างบัญชีทุกสาขา
-    edu = 'input[type="radio"][id="edu1"][value="1"]'
-    degree = 'input[type="radio"][id="degree1"][value="1"]'
-
-    await programcheck(page, uniqueIds[200], edu, degree, '2210111'); // พืชศาสตร์ (ม.6)
-
-
-    await page.screenshot({
-        path: path.join(__dirname, 'playwright-report', `${Date.now()}-------2. ผลการสมัครเรียน.png`)
-    });
-});
 
 test('3.1 ตรวจสอบลิ้งค์หน้าแรก', async ({ page }) => {
     await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php'); // เปลี่ยนเป็น URL ของคุณ
@@ -370,6 +340,38 @@ test('8. สามารถ logout ได้', async ({ page }) => {
         path: path.join(__dirname, 'playwright-report', `${Date.now()}-------8. ผลการล็อกเอาท์.png`)
     });
 });
+
+test('1. สมัครเรียน ปีการศึกษา 2568', async ({ page }) => {
+    await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
+
+    // ทดสอบสร้างบัญชีทุกสาขา
+    edu = 'input[type="radio"][id="edu1"][value="1"]'
+    degree = 'input[type="radio"][id="degree1"][value="1"]'
+
+    await programcheck(page, uniqueIds[1], edu, degree, '2210111'); // พืชศาสตร์ (ม.6)
+
+
+    await page.screenshot({
+        path: path.join(__dirname, 'playwright-report', `${Date.now()}-------1. ผลการสมัครเรียน.png`)
+    });
+
+});
+
+test('2. สมัครเรียน ภาคเรียนที่ 2 ปีการศึกษา 2567', async ({ page }) => {
+    await page.goto('https://www.surin.rmuti.ac.th/Test/Quo/index.php');
+
+    // ทดสอบสร้างบัญชีทุกสาขา
+    edu = 'input[type="radio"][id="edu1"][value="1"]'
+    degree = 'input[type="radio"][id="degree1"][value="1"]'
+
+    await programcheck(page, uniqueIds[200], edu, degree, '2210111'); // พืชศาสตร์ (ม.6)
+
+
+    await page.screenshot({
+        path: path.join(__dirname, 'playwright-report', `${Date.now()}-------2. ผลการสมัครเรียน.png`)
+    });
+});
+
 
 // ฟังก์ชันลงทะเบียนแต่ละสาขา เทอม  2 2567
 async function programcheck2(page, id, edu, degree, program) {
